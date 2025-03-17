@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Web App Opener</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 600px;
+        }
+
+        .instruction {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #cccccc;
+        }
+
+        .telegram-button {
+            background-color: #2481cc;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .telegram-button:hover {
+            background-color: #1a5f9a;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .instruction {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p class="instruction">Open the link and use web app in Telegram</p>
+        <button class="telegram-button" onclick="openTelegramWebApp()">
+            Open Telegram Web App
+        </button>
+    </div>
+
+    <script>
+        function openTelegramWebApp() {
+            // Replace with your actual Telegram web app URL
+            const webAppUrl = 'https://t.me/Mori_webapp_test_bot';
+            
+            // Open in new tab
+            window.open(webAppUrl, '_blank');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+{% load static %}
+{% load custom_tags %}
+
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    {#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+    <link rel="icon" type="image/x-icon" href="{% static 'img/update.jpg' %}">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/daily.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/loading&mint.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/bg.css' %}"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open Sans:wght@700&display=swap"/>
+    <link rel="stylesheet" href=" https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+    <title>MoriMint</title>
+
+    <style>
+        .disabled-link {
+            pointer-events: none !important;
+
+        }
+
+        .disabled {
+            opacity: 0.5; /* Makes the item appear visually disabled */
+            pointer-events: none; /* Prevents any interaction with the disabled item */
+            cursor: not-allowed; /* Changes the cursor to indicate it's disabled */
+        }
+
+
+        .tooltip {
+        
+            visibility: hidden !important;
+            position: absolute !important;
+
+            left: 70% !important;
+            transform: translateX(-50%) !important;
+            background-color: #333 !important;
+            color: #fff !important;
+            text-align: center !important;
+            padding: 8px !important;
+            border-radius: 4px !important;
+            white-space: nowrap !important;
+            font-size: 14px !important;
+            z-index: 1 !important;
+            opacity: 0 !important;
+            transition: opacity 0.3s ease !important;
+        }
+
+        .tooltip-container:hover .tooltip {
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+
+        .tooltip-container.active .tooltip {
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+
+    </style>
+    {#    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline';">#}
+
+
+</head>
+<body>
+
+<section id="mainload" class="bg_loading">
+
+
+    <div class="loading">
+        <div class="loading_effeect">
+            <div class="container">
+                <div class="line"></div>
+                <div class="line d1"></div>
+                <div class="line d2"></div>
+                <div class="line d3"></div>
+                <div class="line d4"></div>
+                <div class="line d5"></div>
+                <br>
+                <div class="caption">
+                    <p style='display:inline-block;'>Loading</p>
+                    <div class="dot">.</div>
+                    <div class="dot">.</div>
+                    <div class="dot">.</div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="intro_text">
+            <p class="first_p_child">Morimint NFT+Token</p>
+            <p class="second_p_child">will be launched</p>
+        </div>
+
+        <div class="on_ton">
+            <p> ON <span>TON</span></p>
+        </div>
+
+
+        <div class="intro_image">
+            <img class="first_loading_image" src="{% static 'img/images/ton.png' %}" alt="">
+            <img src="{% static 'img/images/mori_brain_loading.png' %}" alt="">
+        </div>
+
+        <div class="footer">
+            <div class="footer_text">
+                <p>Stay tuned</p>
+                <p>Moer info official channels</p>
+            </div>
+
+
+            <div class="social">
+
+                <i class="bi bi-telegram"></i>
+
+
+                <i class="bi bi-youtube"></i>
+
+
+                <i class="bi bi-twitter-x"></i>
+
+
+                <i class="bi bi-instagram"></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<div id="particles-js"></div>
+
+
+<div class="maincontent">
+
+
+    <div id="popup-container-terms" class="popup-container-terms" style="display: none;">
+        <!-- Popup 1 -->
+        <div class="popupterms" id="popupterms-1">
+            <h2>TReceive Free NFTs </h2>
+            <p>In this app, by collecting points, you can receive
+                free NFTs directly and MoriBit tokens indirectly according to the rules.</p>
+            <button onclick="nextPopup(1)">Next</button>
+        </div>
+
+        <!-- Popup 2 -->
+        <div class="popupterms" id="popupterms-2">
+            <h2> Important Program Rules </h2>
+            <p>After entering the app, be sure to read the program rules
+                page to avoid any issues with your account during minting.</p>
+            <button onclick="previousPopup(2)">Previous</button>
+            <button onclick="nextPopup(2)">Next</button>
+        </div>
+
+        <!-- Popup 3 -->
+        <div class="popupterms" id="popupterms-3">
+            <h2>No Points Will Be Deducted </h2>
+            <p>You don't need to spend your points to use the app's features.
+                Just watch in-app ads and earn points from them.</p>
+            <button onclick="previousPopup(3)">Previous</button>
+            <button onclick="nextPopup(3)">Next</button>
+        </div>
+
+        <!-- Popup 4 -->
+        <div class="popupterms" id="popupterms-4">
+            <h2>High Earnings from Two Apps </h2>
+            <p>You can use this app and the MoriMint application for
+                Android phones simultaneously to receive NFTs and MoriBit tokens.
+                Both apps are officially registered on the Tron network.</p>
+            <button onclick="previousPopup(4)">Previous</button>
+            <button onclick="agreeTerms()">Agree</button>
+        </div>
+    </div>
+
+
+    <nav>
+        <div id="nav" class="navigation hidenav">
+            <ul>
+                <li data-section="referralSection" class="list">
+                    <a href="#">
+                        <span class="icon"><i class="bi bi-people icon"></i></span>
+                        <span class="text">Referral</span>
+                    </a>
+                </li>
+                <li data-section="taskSection" class="list">
+                    <a href="#">
+                        <span class="icon"><i class="bi bi-card-checklist"></i></span>
+                        <span class="text">Task</span>
+                    </a>
+                </li>
+                <li data-section="airdropSection" class="list active" id="homepage">
+                    <a href="#">
+                        <span id="homepage" class="icon"><i class="bi bi-house-door"></i></span>
+                        <span class="text">Home</span>
+                    </a>
+                </li>
+                <li data-section="earnSection" class="list" >
+                    <a href="#">
+                        <span class="icon"><i class="bi bi-box"></i></span>
+                        <span class="text">Earn</span>
+                    </a>
+                </li>
+                <li data-section="walletSection" id="w" class="list">
+                    <a href="#">
+                        <span class="icon"><i class="bi bi-wallet2"></i></span>
+                        <span class="text">Wallet</span>
+                    </a>
+                </li>
+                <div class="indicator"></div>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div id="referralSection" class="content-section">
+        <div class="referralSectioncont">
+
+
+            <div class="referral_container">
+                <img src="{% static 'img/images/speeach2.png' %}" alt="Invite Friends">
+                <div class="referral_text">
+                    <i class="bi bi-people-fill"></i>
+                    <h2>Invite Friends!</h2>
+                </div>
+            </div>
+
+            <div class="referral_container_content animate__animated animate__zoomIn">
+
+
+                <div class="ref_cards">
+                    <div>
+
+                        <img src="{% static 'img/images/premium-gift.png' %}" alt="">
+                        <p class="ref_cards_p_amount">25000</p>
+                        <p>Invite a friend with telegram premium.</p>
+                    </div>
+
+                    <div>
+
+                        <img src="{% static 'img/images/gift.png' %}" alt="">
+                         <p class="ref_cards_p_amount">10000</p>
+
+                        <section>
+                            <p style="width: 230px" >Invite a friend</p>
+                        </section>
+
+                    </div>
+
+                </div>
+
+                <div class="referral_links">
+                    <div>
+                        <p id="inviteLink" style="display:none;">
+                            https://t.me/mori_miniapp_bot?start=invite_{{ user_data.referral_code }}
+
+                        </p>
+                        <p class="inviteLinklable">referral link</p>
+                    </div>
+
+                    <div>
+                        <button onclick="copyToClipboard()">
+                            <i class="bi bi-copy"></i>
+                        </button>
+                    </div>
+                </div>
+
+
+                <p class="ref_tag_titl">List of your friends( {{ main_user.invite.count }} )</p>
+                <div class="main_invited">
+
+                    {% if invited_user %}
+                        {% for invite in invited_user %}
+
+                            <section class="main_invite_f animate__animated animate__zoomInUp">
+                                <div class="ref_count_container">
+                                    <div>
+                                        <img src="{% static 'img/images/ref.png' %} " alt="">
+                                        <p>{{ invite }}</p>
+                                    </div>
+
+
+                                </div>
+                            </section>
+
+
+                        {% endfor %}
+
+                    {% else %}
+
+                        <p class="nofirens">
+                            you do not have any friend.
+                        </p>
+
+                    {% endif %}
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div class="overlay" id="overlay"></div>
+        <div class="popup" id="popup">
+            Copied to clipboard!
+            <button onclick="closePopup()">Close</button>
+        </div>
+    </div>
+
+
+    <div id="taskSection" class="content-section task_bg  ">
+
+
+        <div class="tasks_containerr">
+            <div class="image_task_top_logo">
+
+                <img src="{% static 'img/images/task.png' %}" alt="">
+                <p>Tasks</p>
+
+            </div>
+
+
+            <div class="tasks_list_container">
+                {% if tasks %}
+                    {% for task in tasks %}
+                        {% if data in task.user.all %}
+                            <a class="task-link animate__animated  animate__fadeInDown" rel="noopener noreferrer">
+                                <div class="tasks_list">
+                                    <div>
+                                        <div>
+                                            {% if task.image.url or task.image %}
+                                                <img src="{{ task.image.url }}" alt="task">
+                                            {% else %}
+                                                <img src="{% static 'img/images/arrwo icon.png' %}" alt="task">
+                                            {% endif %}
+
+                                            <p>{{ task.name }}</p>
+                                        </div>
+                                        <div class="gift_task_count">
+                                            <p>{{ task.gift }}</p>
+                                            <img class="get" src="{% static 'img/images/tick.png' %}" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                        {% else %}
+                            <form action="" method="post" class="animate__animated animate__zoomInDown tasks_com">
+                                {% csrf_token %}
+
+                                <a rel="noopener noreferrer"
+                                   onclick="GetTaskPart('{{ task.id }}','{{ data.telegram_user_id }}', this, event)"
+                                   href="{{ task.link }}"
+                                   class="task-link">
+                                    <div class="tasks_list">
+                                        <div>
+                                            <div>
+                                                {% if task.image and task.image.url %}
+                                                    <img src="{{ task.image.url }}" alt="">
+                                                {% else %}
+                                                    <img src="{% static 'img/images/arrwo icon.png' %}" alt="image"
+                                                         style="height: 20px">
+                                                {% endif %}
+                                                <p>{{ task.name }}</p>
+                                            </div>
+                                            <div class="gift_task_count">
+                                                <p>{{ task.gift }}</p>
+                                                <img class="nav-coin" src="{% static 'img/images/3d-target.png' %}"
+                                                     alt="coin">
+                                                <span class="countdown-timer" style="color: #ffffff"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+
+                            </form>
+
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+
+
+                    <div class="levelwarnearn">
+                        <p style="font-size: 14px !important;"> There is no task to do!</p>
+                    </div>
+                {% endif %}
+            </div>
+
+            <p class="notiftask">
+                <span style="color: yellow" class="flashing-text">Warning</span> : To receive the gift, tasks must be
+                completed fully and accurately. Any attempt to receive the gift without completing the tasks will result
+                in
+                the account being blocked.
+            </p>
+        </div>
+
+
+    </div>
+
+    <div id="earnSection" class="content-section">
+        <!-- Video Detail Section -->
+        <div id="videoDetail" class="video-detail-section video-detail-container_hide ">
+            <div class="video-detail-container">
+                <div class="video-detail-header">
+                    <img src="{% static 'img/images/youtube.png' %}" alt="YouTube">
+                    <h2>Mori Ai Company Start Video!</h2>
+                </div>
+
+                <div class="video-detail-container_btns">
+                    <a rel="noopener noreferrer" id="videolinkswathc" href="" target="_blank">Watch Video</a>
+                    <form method="post" action="">
+                        {% csrf_token %}
+                        <input type="hidden" id="videoIdHidden" name="video_id">
+                        <button type="button" id="checkbtnsrarn" onclick="completeVideo('{{ data.telegram_user_id }}')">
+                            check
+                        </button>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div id="earnSectionmain" class="earn_container ">
+            <div class="top_image_eatn_container">
+                <div class="top_image_eatn_container_img">
+                    <img class="top_image_eatn_container_img1" src="{% static 'img/images/Rectangle.png' %}" alt="">
+                    <img class="top_image_eatn_container_img2" src="{% static 'img/images/brain.png' %}" alt="">
+                </div>
+                <p>
+                    <i class="bi bi-box"></i>
+                    Earn more coins
+                </p>
+            </div>
+            <p class="earn_container_ttitle">Mori Youtube</p>
+            {% if earn %}
+
+                <div class="youtube_earn_videos animate__animated animate__bounceInDown ">
+                    {% for videos in earn %}
+                        {% with user_ids=videos.user.all|pluck:'telegram_user_id' %}
+                            {% if data.telegram_user_id in user_ids %}
+                                <div class="youtube_earn_videos_containers ">
+                                    <div>
+                                        <div class="youtube_earn_videos_containers_detail_first">
+                                            <img src="{% static 'img/images/youtube.png' %}" alt="youtube">
+                                            <p>{{ videos.title }}</p>
+                                        </div>
+                                        <div class="youtube_earn_videos_containers_detail">
+                                            <img src="{% static 'img/images/tick.png' %}" alt="tick">
+                                        </div>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="youtube_earn_videos_containers" id="{{ videos.id }}"
+                                     onclick="openVideoDetail('{{ videos.link }}', '{{ videos.id }}')">
+
+                                    <div>
+                                        <div class="youtube_earn_videos_containers_detail_first">
+                                            <img src="{% static 'img/images/youtube.png' %}" alt="youtube">
+                                            <p>{{ videos.title }}</p>
+                                        </div>
+                                        <div class="youtube_earn_videos_containers_detail">
+                                            <p id="giftCount_{{ videos.id }}">+{{ videos.giftCount }}</p>
+                                            <img class="youtube_earn_videos_containers_brain" id="video_{{ videos.id }}"
+                                                 src="{% static 'img/images/3d-target.png' %}" alt="MoriBit-Gold">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endwith %}
+                    {% endfor %}
+                </div>
+
+
+            {% else %}
+                <div class="levelwarnearn">
+                    <p> There is not any video !</p>
+                </div>
+            {% endif %}
+
+        </div>
+
+        <!-- Modal -->
+        <div id="popup3" class="popup3">
+            <p> we will check it , if it does not get green tick you should see the video again !</p>
+        </div>
+        <div id="overlay3" class="overlay3"></div>
+    </div>
+
+
+    <div id="walletSection" class="content-section">
+        <div class="wallet_section_conainer_main">
+            <div class="wallet_section_conainer">
+                <div class="wallet_effect">
+
+                    <img class="Rectangle" src="{% static 'img/images/Rectangle.png' %}" alt="">
+
+                    <img class="Rectangle_brain" src="{% static 'img/images/brain.png' %}" alt="">
+
+                    <img class="main_wallet_img" src="{% static 'img/images/wallet.png' %}" alt="">
+
+                </div>
+
+            </div>
+
+
+            <div class="text_middels_box_main">
+
+
+{#                <div class="comingSoonWallet">#}
+{#                    <p class="animate__animated  animate__fadeInDown">coming soon ...</p>#}
+{#                </div>#}
+                <a rel="noopener noreferrer" class="text_middels_box" onclick="wallet()">
+
+                            <div class="content_of_box">
+
+                                <div class="image_container">
+
+                                     <img class="imgasize" src="{% static 'img/images/ton.png' %}" alt="">
+
+
+                                     <img class="imgasize2" src="{% static 'img/images/arrows.png' %}" alt="">
+
+                                </div>
+
+                                 <p class="animate__animated  animate__fadeInDown">Connect Your TON wallet </p>
+
+                            </div>
+
+
+
+                             <img class="arrows_wallet" src="{% static 'img/images/arrwo icon.png' %}" alt="">
+                             </a>
+
+
+                <a rel="noopener noreferrer" target="_blank"
+                   href="#"
+                   class="token_id_wallet">
+                    Check Token ID
+                </a>
+
+            
+                <div class="wallet_detail_p">
+                    <p>
+                        <img src="{% static 'img/images/doller.png' %}" style="width: 25px" alt="">
+
+                        dollar income
+                        <span class="user_dooler"> $ {{ estiamte_dollers.count }}</span>
+                    </p>
+                    <p>
+                        <img src="{% static 'img/images/lottery.png' %}" style="width: 25px" alt="">
+                        lottery amount
+                        <span class="user_dooler"> $ {{ lootory.amount }}</span>
+                    </p>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <div id="airdropSection" class="content-section  ">
+        <div class="aircon">
+            <div class="t_con animate__animated animate__bounceIn">
+                <div class="user_name">
+
+                    <div class="top_user_name tooltip-container" id="tooltipContainer">
+
+                        <div>
+                            {% if main_user.level == 1 %}
+
+                                <img class="user_icon   animate__animated animate__flip"
+                                     src="{% static 'character name/1.Hel.png' %}" alt="Character Image">
+
+                            {% elif main_user.level == 2 %}
+                                <img class="user_icon animate__animated animate__flip"
+                                     src="{% static 'character name/2.vidar.png' %}" alt="Character Image">
+
+                            {% elif main_user.level == 3 %}
+                                <img class="user_icon animate__animated animate__flip"
+                                     src="{% static 'character name/3.demeter.png' %}" alt="Character Image">
+
+
+                            {% elif main_user.level == 4 %}
+                                <img class="user_icon animate__animated animate__flip"
+                                     src="{% static 'character name/4.sif.png' %}" alt="Character Image">
+
+                            {% elif main_user.level == 5 %}
+                                <img class="user_icon animate__animated animate__flip"
+                                     src="{% static 'character name/5.artemis.png' %}" alt="Character Image">
+
+
+                            {% elif main_user.level == 6 %}
+                                <img class="user_icon animate__animated"
+                                     src="{% static 'character name/6.hector.png' %}" alt="Character Image">
+
+                            {% elif main_user.level == 7 %}
+                                <img class="user_icon animate__animated  animate__flip"
+                                     src="{% static 'character name/7.ran.png' %}" alt="Character Image">
+
+
+                            {% elif main_user.level == 8 %}
+                                <img class="user_icon animate__animated animate__flip"
+                                     src="{% static 'character name/8.surtr.png' %}" alt="Character Image">
+
+                            {% elif main_user.level == 9 %}
+                                <img class="user_icon animate__animated  animate__flip"
+                                     src="{% static 'character name/9.medea.png' %}" alt="Character Image">
+
+
+                            {% elif main_user.level == 10 %}
+                                <img class="user_icon animate__animated  animate__flip"
+                                     src="{% static 'character name/10.aegir.png' %}" alt="Character Image">
+
+
+
+                            {% elif main_user.level == 11 %}
+                                <img class="user_icon animate__animated  animate__flip"
+                                     src="{% static 'character name/11.achilles.png' %}" alt="Character Image">
+                            {% elif main_user.level == 12 %}
+                                <img class="user_icon animate__animated  animate__flip"
+                                     src="{% static 'character name/12.tyr.png' %}" alt="Character Image">
+
+
+                            {% elif main_user.level == 13 %}
+                                <img class="user_icon animate__animated  animate__flip"
+                                     src="{% static 'character name/13.hodr.png' %}" alt="Character Image">
+
+
+
+
+                            {% elif main_user.level == 14 %}
+                                <img class="user_icon animate__animated  animate__flip"
+                                     src="{% static 'character name/14.hera.png' %}" alt="Character Image">
+
+
+
+                            {% elif main_user.level == 15 %}
+                                <img class="user_icon animate__animated  animate__flip"
+                                     src="{% static 'character name/15.bragi.png' %}" alt="Character Image">
+
+
+                            {% elif main_user.level == 16 %}
+                                <img class="user_icon animate__animated  animate__flip"
+                                     src="{% static 'character name/16.skadi.png' %}" alt="Character Image">
+
+
+                            {% elif main_user.level == 17 %}
+                                <img class="user_icon animate__animated  animate__flip"
+                                     src="{% static 'character name/17.idunn.png' %}" alt="Character Image">
+
+
+
+                            {% elif main_user.level == 18 %}
+                                <img class="user_icon animate__animated  animate__flip"
+                                     src="{% static 'character name/18. ares.png' %}" alt="Character Image">
+
+
+                            {% elif main_user.level == 19 %}
+                                <img class="user_icon animate__animated  animate__flip"
+                                     src="{% static 'character name/19.juten.png' %}" alt="Character Image">
+
+                            {% elif main_user.level == 20 %}
+                                <img class="user_icon animate__animated  animate__flip"
+                                     src="{% static 'character name/20.pandora.png' %}" alt="Character Image">
+
+
+
+
+
+
+
+
+                            {% endif %}
+
+                            <p class="top_user_name_name">
+
+                                {% if data.first_name %}
+                                    {{ data.first_name }}
+                                {% elif data.last_name %}
+                                    {{ data.last_name }}
+                                {% else %}
+                                    {{ data.username }}
+                                {% endif %}
+
+                            </p>
+                            {% if main_user.blueTicks %}
+                                <img class="blue" src="{% static 'img/images/blue tick.png' %}" alt="">
+                            {% endif %}
+
+                        </div>
+
+                        <div class="tooltip" id="tooltip">
+                            {% if main_user.level == 1 %}
+                                Hel
+                            {% elif main_user.level == 2 %}
+                                Vidar
+                            {% elif main_user.level == 3 %}
+                                Demeter
+                            {% elif main_user.level == 4 %}
+                                Sif
+                            {% elif main_user.level == 5 %}
+                                Artemis
+                            {% elif main_user.level == 6 %}
+                                Hector
+                            {% elif main_user.level == 7 %}
+                                Ran
+                            {% elif main_user.level == 8 %}
+                                Surtr
+                            {% elif main_user.level == 9 %}
+                                Mdea
+                            {% elif main_user.level == 10 %}
+                                Aegir
+                            {% elif main_user.level == 11 %}
+                                Achilles
+                            {% elif main_user.level == 12 %}
+                                Tyr
+                            {% elif main_user.level == 13 %}
+                                Hodr
+                            {% elif main_user.level == 14 %}
+                                Hera
+                            {% elif main_user.level == 15 %}
+                                Bragi
+                            {% elif main_user.level == 16 %}
+                                Skadi
+                            {% elif main_user.level == 17 %}
+                                Idunn
+                            {% elif main_user.level == 18 %}
+                                Ares
+                            {% elif main_user.level == 19 %}
+                                Juten
+                            {% elif main_user.level == 20 %}
+                                Pandora
+                            {% endif %}
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <div class="user_top_data">
+                    <div data-section="dailybonus" >
+
+                        <img class="f_img" src="{% static 'img/images/schedule_new.png' %}" alt="">
+                        <p class="user_top_data_p"></p>
+                    </div>
+                    <div class="nav-item"></div>
+                    <div data-section="giftcode">
+
+                        <img class="sec_img" src="{% static 'img/images/gift-box-new.png' %}" alt="">
+                        <p class="user_top_data_p"></p>
+                    </div>
+                    <div class="nav-item"></div>
+                    <div data-section="shop">
+
+                        <img class="thi_img" src="{% static 'img/images/grocery-store.png' %}" alt="">
+                        <p class="user_top_data_p"></p>
+                    </div>
+                    <div class="nav-item"></div>
+                    <div data-section="profit" id="profits_con_user" class="profits_con">
+
+                        <aside>
+                            <img class="for_img" src="{% static 'img/images/money.png' %}" alt="">
+                            <p><span class="proftcolor">+1m</span></p>
+                        </aside>
+
+
+                    </div>
+
+
+                </div>
+                <div class="level">
+                    <div class="button-container data_level">
+                        <div class="orbit-ring one"></div>
+                        <div class="orbit-ring two"></div>
+                        <button class="levelbutton">level {{ main_user.level }}</button>
+                    </div>
+
+                    {#                <div class="data_level">#}
+                    {#                    <img src="{% static 'img/images/level.png' %}" alt="">#}
+                    {#                    <p class="first_p_level">level </p>#}
+                    {#                    <p class="second_p_level">{{ main_user.level }}</p>#}
+                    {##}
+                    {#                </div>#}
+
+                    <div class="progress-container">
+                        <div id="progressBarFill" class="progress-fill"></div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <div class="coin_count animate__animated animate__flash">
+
+                <img src="{% static 'img/images/coin-brain.png' %}">
+
+                <input type="hidden" id="user__id" value="{{ data.telegram_user_id }}">
+                <input type="hidden" id="user_token" value="{{ data.token }}">
+
+
+                <form id="csrf-form">
+                    {% csrf_token %}
+                    <h3 id="tap-count">{{ main_user.count }}
+                    </h3>
+
+
+
+                    <button type="button" style="visibility: hidden" id="submit-button">Submit
+                    </button>
+                </form>
+
+
+            </div>
+
+            {% if referal_task and main_user not in referal_task.user.all %}
+                <div id="team_referral_work" class="team_referral_work">
+                    <img src="{% static 'img/images/team-work (1).png' %}" onclick="teamReferralWork()" alt="">
+                </div>
+            {% else %}
+                <!-- Optional: Content if the user is part of the referral task -->
+            {% endif %}
+
+            <div class="senshi_game" onclick="senshiGame()">
+
+                <img id="gameImage" src="{% static 'img/game.png' %}">
+
+
+            </div>
+
+            <div class="mintContainer">
+                <div class="mint  animate__animated animate__bounceIn">
+
+                    {#                    <div class="loader-circle-75" id="blueeffectremove"></div>#}
+
+                    {% if main_user.level <= 4 %}
+                        <div class="wallet-container">
+                            <img src="{% static 'bags of level/4-min.png' %}" id="tap-image" alt="Wallet"
+                                 class="wallet">
+                        </div>
+
+                    {% elif main_user.level <= 8 %}
+                        <div class="tree-container">
+                            <img src="{% static 'bags of level/5-min.png' %}" alt="Tree" class="tree" id="tap-image">
+                        </div>
+
+                    {% elif main_user.level <= 12 %}
+                        <div class="bag-container">
+                            <img src="{% static 'bags of level/11-min.png' %}" alt="Coin Bag" class="bag"
+                                 id="tap-image">
+                        </div>
+
+                    {% elif main_user.level <= 16 %}
+
+                        <div class="box-container">
+                            <img src="{% static 'bags of level/19-min.png' %}" alt="box" class="box"
+                                 id="tap-image">
+                        </div>
+
+                    {% elif main_user.level <= 20 %}
+
+
+                        <div class="safe-container">
+                            <img src="{% static 'bags of level/15-min.png' %}" alt="safe" class="safe"
+                                 id="tap-image">
+                        </div>
+
+
+                    {% endif %}
+
+
+                </div>
+
+            </div>
+
+            <div class="boost_charg">
+                <div class="animate__animated animate__backInLeft ">
+                    <img src="{% static 'img/images/lightning-bolt.png' %}" alt="">
+                    <p id="energy_count"> {{ main_user.energy }} </p>
+                    <p>/</p>
+                    <p id="main_energy"> {{ main_user.energy }} </p>
+                </div>
+                <div class="animate__animated animate__backInRight " id="boosts ">
+                    <button type="button" onclick="Boosts()">
+
+                        <img src="{% static 'img/images/rocket-ship.png' %}" alt="">
+                        <p>Boost</p>
+
+
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div id="user_info_con" class="user_info_con hidden">
+        <div id="dailybonus_user" class="user-section">
+
+
+            <div class="luckycwheel" id="luckycwheel">
+
+
+                <div class="container_1">
+                    <div id="container"></div>
+
+                    <div class="js-container container" id="happy" style="top:0px !important;"></div>
+                </div>
+
+
+                <div class="btns">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <button type="button" id="spinButton" class="submit-btn celebrate_btn"
+                                onclick="LuckyWheelCheck('{{ data.telegram_user_id }}')">Get gift
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+
+
+            <div id="hideit" class="dailybonus_user">
+                <div class="top_data_daily">
+
+                    <img src="{% static 'img/images/calander_daily_bonuse.png' %}" alt="">
+                    <p>Daily Reward</p>
+                    <p>You can get free daily score from here</p>
+                </div>
+
+
+                <div class="daily_main_gift">
+                    {% for bonus in daily_bonuses %}
+                        <div class="{% if bonus.day == current_day %}active{% else %}diactive{% endif %}">
+                            <form method="post" action="">
+                                {% csrf_token %}
+                                <button type="button"
+                                        onclick="getdailybonusgift('{{ data.telegram_user_id }}', {{ bonus.pk }})">
+                                    <p class="days">{{ bonus.title }}
+                                        {% with bonus.user.all as users %}
+                                            {% if data in users %}
+                                                <img class="tickdaysimg" src="{% static 'img/images/tick.png' %}"
+                                                     alt="">
+                                            {% endif %}
+                                        {% endwith %}
+                                    </p>
+                                    <img class="b_image" src="{% static 'img/images/coin-brain.png' %}" alt="">
+                                    <p>{{ bonus.giftCount }}</p>
+                                </button>
+                            </form>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="dailybonus_user_button animate__animated animate__backInDown">
+
+                    <div class="dailybonus_user_buttonimg">
+
+
+                        <button id="dailybonus_user_button">
+                            <img src="{% static 'img/images/icon_lucky.png' %}" alt="lucky wheel">
+                            lucky Wheel
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <div id="giftcode_user" class="user-section">
+            <div class="dailybonus_user_container">
+                <div>
+
+                    <img src="{% static 'img/images/big gift.png' %}" alt="">
+                    <p>Gift Code</p>
+                </div>
+                <p>
+                    We have a special reward for you in this section. By participating actively in the Mori program, you
+                    can
+                    receive codes ranging from thousands to millions of tokens. Enter these codes into the Morimint app
+                    in
+                    the designated section to have your bonus tokens added to your account.</p>
+                <div class="mwkad">
+                    <div class="aqiqod">
+                        <p class="gift_text">Your Code List</p>
+                        <div class="gift_cod_container">
+                            {% if androidGiftCod %}
+                                {% for cods in androidGiftCod %}
+
+                                    <div class="main_gift_code animate__animated  animate__fadeInDown">
+                                        <div class="sub_gift_cod">
+                                            <p class="cod_gift">{{ cods.giftcode }}</p>
+                                            <div class="copy_gift_code"><i class="bi bi-copy"></i></div>
+                                        </div>
+                                    </div>
+
+                                {% endfor %}
+
+                            {% else %}
+                                <p class="nofirens animate__animated  animate__fadeInDown">
+                                    there is not any gift cod.
+                                </p>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="popup2" class="popup2">
+                <p>Text copied to clipboard!</p>
+                <button onclick="closePopup2()">Close</button>
+            </div>
+            <div id="overlay2" class="overlay2"></div>
+        </div>
+
+
+        <div id="shop_user" class="user-section">
+            <div class="shop_user_container">
+                <div class="top_data_of_store">
+
+                    <img src="{% static 'img/images/bug shop.png' %}" alt="">
+                    <p>Store</p>
+                </div>
+                <p class="intro_store_text">Welcome to the MORI NFT store. Here, you can purchase your desired NFTs.
+                    Additionally, NFT holders will enjoy special benefits that will be announced subsequently.</p>
+
+                <div class="nft_container">
+
+
+                    {% if NftStore %}
+                        {% for nfts in NftStore %}
+
+                            <div class="main_nfts animate__animated  animate__fadeInDown">
+                            
+                                
+                                
+                                {% if nfts.image %}
+                                	 <img src="{{ nfts.image.url }}" alt="nft">
+                                    {% else %}
+                                     <img src="{% static 'img/MoriaiLogo.png' %}" width="55px !important" height="55px !important" alt="nft">
+                                {% endif %} 
+                               
+                                <p>{{ nfts.title }} </p>
+                                <a rel="noopener noreferrer" href="{{ nfts.link }}" target="_blank">WATCH NOW</a>
+
+
+                            </div>
+
+
+                        {% endfor %}
+
+                    {% else %}
+
+                        <div class="divsooncenter">
+                            <p class="flashing-text ">
+                                coming soon ...
+                            </p>
+                        </div>
+
+                    {% endif %}
+
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div id="profit_user" class="user-section profit_user_container_hide ">
+                <div class="profit_user_container  ">
+                    <div class="profit_user_container_img">
+
+                        <img src="{% static 'img/images/profit_image.png' %}" alt="">
+
+                        <img class="pro_coin" src="{% static 'img/images/coin_profit.png' %}" alt="">
+                    </div>
+
+                    <div class="profit_conditions">
+
+                        <p>
+
+                            {% if not main_user.get_profit %}
+                                <img src="{% static 'img/check (1) (1).png' %}" alt="check"
+                                     style="width: 20px; margin: 0 10px;">
+
+                            {% else %}
+                                <img src="{% static 'img/decline (1).png' %}" alt="decline"
+                                     style="width: 30px; margin: 0 5px;">
+
+                            {% endif %}
+                            you must be in the program for 10 consecutive days.</p>
+
+                        <p>
+                            {% if all_tasks_completed %}
+                                <img src="{% static 'img/check (1) (1).png' %}" alt="check"
+                                     style="width: 20px; margin: 0 10px;">
+
+                            {% else %}
+                                <img src="{% static 'img/decline (1).png' %}" alt="decline"
+                                     style="width: 30px; margin: 0 10px;">
+
+                            {% endif %}
+
+
+                            Do all the tasks</p>
+
+
+                        {#                    {% if main_user.get_profit %}#}
+                        {#                    <button type="button" class="profit_conditions_disable"> Got It#}
+                        {#                    </button>#}
+                        {#                    {% else %}#}
+                        <button type="button" onclick="Getprofit('{{ data.telegram_user_id }}')"> Got It
+                        </button>
+                        {#                    {% endif %}#}
+
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </form>
+
+
+    </div>
+
+    <div id="boosts" class="bostss hidden">
+
+
+        <div class="increase_token_balancs">
+
+
+        </div>
+
+        <div class="free_daily_boosters">
+            <p>Free Daily Boosters</p>
+
+            <div class="free_daily_boosters_inner">
+                <form action="" onclick="fullEnergy()">
+                    {% csrf_token %}
+
+
+                    <img src="{% static 'img/images/thunder.png' %}" alt="thunder">
+                    <section>
+                        <p>Full Energy</p>
+                        <p class="numb_g">1/ <span id="fullEnergy"></span> available</p>
+                    </section>
+                    <button type="button" id="full_energy_btn">
+
+                    </button>
+                </form>
+
+                <form id="boostform" class="" onclick="Boostss()">
+                    {% csrf_token %}
+
+                    <img src="{% static 'img/images/gloves.png' %}" alt="tap_finger">
+                    <section>
+                        <p>Boost</p>
+                        <p class="numb_g">1/ <span id="Boostss"></span> available</p>
+                    </section>
+                    <button type="button">
+
+                    </button>
+
+                </form>
+
+
+            </div>
+
+        </div>
+
+        <div class="boosters_sect">
+            <p class="boosters_sect_p">Boosters</p>
+            <div class="_boosters_inner">
+                <form class="disabled" action="" onclick="MultiTapfunc()">
+                    {% csrf_token %}
+                    <div>
+
+                        <img class="tap_finger_bo" src="{% static 'img/images/tap_finger.png' %}" alt="tap_finger">
+                        <section>
+                            <p>Multi tap</p>
+                            <aside>
+                                <img src="{% static 'img/images/coin-brain.png' %}" alt="coin-brain">
+                                <p class="numb_g">1/ <span id="MultiTapfunc"></span> available </p>
+
+                            </aside>
+                        </section>
+                    </div>
+                    <button type="button">
+
+                    </button>
+                </form>
+
+
+                <form action="" onclick="TapBot()" class="disabled">
+                    {% csrf_token %}
+                    <div>
+
+                        <img src="{% static 'img/images/mori charachterokok 1.png' %}" alt="" style="width: 50px;">
+                        <section>
+                            <p>Speed Bot</p>
+                            <aside>
+
+                                <img src="{% static 'img/images/coin-brain.png' %}" alt="coin-brain">
+                                <p class="numb_g">1/ <span id="MultiTapfunc">1</span> available </p>
+
+                            </aside>
+                        </section>
+                    </div>
+
+                    <button type="button">
+
+                    </button>
+
+                </form>
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <!-- The level Modal -->
+    <div id="levelmodal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Upgrade Your Levels</h2>
+
+            <div class="scrollable-content">
+                <!-- Level 1 -->
+                <div class="level-item disabled">
+                    <img src="{% static 'character name/1.Hel.png' %}" alt="Level 1">
+                    <div class="level-item-details">
+                        <h4>Level 1</h4>
+                        <p>Energy: 3000</p>
+                        <p>Tap score: 4</p>
+                        <p>Boost Time: 10s</p>
+                    </div>
+                    <button class="upgrade-btn" disabled>status</button>
+                </div>
+
+                <!-- Level 2 -->
+                <div class="level-item {% if main_user.level >= 2 %}disabled{% endif %}">
+                    <img src="{% static 'character name/2.vidar.png'  %}" alt="Level 2">
+                    <div class="level-item-details">
+                        <h4>Level 2</h4>
+                        <p>Energy: 4000</p>
+                        <p>Tap score: 8</p>
+                        <p>Boost Time: 10s</p>
+                    </div>
+                    <button class="upgrade-btn" onclick="showremainupgrade(2)"
+                            {% if main_user.level >= 2 %}disabled{% endif %}>status
+                    </button>
+                </div>
+
+                <!-- Level 3 -->
+                <div class="level-item {% if main_user.level >= 3 %}disabled{% endif %}">
+                    <img src="{% static 'character name/3.demeter.png'  %}" alt="Level 3">
+                    
+                    <div class="level-item-details">
+                        <h4>Level 3</h4>
+                        <p>Energy: 5000</p>
+                        <p>Tap score: 10</p>
+                        <p>Boost Time: 10s</p>
+                    </div>
+                    <button class="upgrade-btn" onclick="showremainupgrade(3)"
+                            {% if main_user.level >= 3 %}disabled{% endif %}>status
+                    </button>
+                </div>
+
+                <!-- Level 4 -->
+                <div class="level-item {% if main_user.level >= 4 %}disabled{% endif %}">
+                    <img src="{% static 'character name/4.sif.png'  %}" alt="Level 4">
+                    <div class="level-item-details">
+                        <h4>Level 4</h4>
+                        <p>Energy: 6000</p>
+                        <p>Tap score: 12</p>
+                        <p>Boost Time: 10s</p>
+                    </div>
+                    <button class="upgrade-btn" onclick="showremainupgrade(4)"
+                            {% if main_user.level >= 4 %}disabled{% endif %}>status
+                    </button>
+                </div>
+
+                <!-- Level 5 -->
+                <div class="level-item {% if main_user.level >= 5 %}disabled{% endif %}">
+                    <img src="{% static 'character name/5.artemis.png' %}" alt="Level 5">
+                    <div class="level-item-details">
+                        <h4>Level 5</h4>
+                        <p>Energy: 6500</p>
+                        <p>Tap score: 14</p>
+                        <p>Boost Time: 10s</p>
+                    </div>
+                    <button class="upgrade-btn" onclick="showremainupgrade(5)"
+                            {% if main_user.level >= 5 %}disabled{% endif %}>status
+                    </button>
+                </div>
+
+                <!-- Level 6 -->
+                <div class="level-item {% if main_user.level >= 6 %}disabled{% endif %}">
+                    <img src="{% static 'character name/6.hector.png' %}" alt="Level 6">
+                    <div class="level-item-details">
+                        <h4>Level 6</h4>
+                        <p>Energy: 7000</p>
+                        <p>Tap score: 16</p>
+                        <p>Boost Time: 10s</p>
+                    </div>
+                    <button class="upgrade-btn" onclick="showremainupgrade(6)"
+                            {% if main_user.level >= 6 %}disabled{% endif %}>status
+                    </button>
+                </div>
+
+                <!-- Level 7 -->
+                <div class="level-item {% if main_user.level >= 7 %}disabled{% endif %}">
+                    <img src="{% static 'character name/7.ran.png' %}" alt="Level 7">
+                    <div class="level-item-details">
+                        <h4>Level 7</h4>
+                        <p>Energy: 7500</p>
+                        <p>Tap score: 18</p>
+                        <p>Boost Time: 10s</p>
+                    </div>
+                    <button class="upgrade-btn" onclick="showremainupgrade(7)"
+                            {% if main_user.level >= 7 %}disabled{% endif %}>status
+                    </button>
+                </div>
+
+                <!-- Level 8 -->
+                <div class="level-item {% if main_user.level >= 8 %}disabled{% endif %}">
+                    <img src="{% static 'character name/8.surtr.png' %}" alt="Level 8">
+                    <div class="level-item-details">
+                        <h4>Level 8</h4>
+                        <p>Energy: 8000</p>
+                        <p>Tap score: 20</p>
+                        <p>Boost Time: 10s</p>
+                    </div>
+                    <button class="upgrade-btn" onclick="showremainupgrade(8)"
+                            {% if main_user.level >= 8 %}disabled{% endif %}>status
+                    </button>
+                </div>
+
+                <!-- Level 9 -->
+                <div class="level-item {% if main_user.level >= 9 %}disabled{% endif %}">
+                    <img src="{% static 'character name/9.medea.png' %}" alt="Level 9">
+                    <div class="level-item-details">
+                        <h4>Level 9</h4>
+                        <p>Energy: 8500</p>
+                        <p>Tap score: 22</p>
+                        <p>Boost Time: 10s</p>
+                    </div>
+                    <button class="upgrade-btn" onclick="showremainupgrade(9)"
+                            {% if main_user.level >= 9 %}disabled{% endif %}>status
+                    </button>
+                </div>
+
+                <!-- Level 10 -->
+                <div class="level-item {% if main_user.level >= 10 %}disabled{% endif %}">
+                    <img src="{% static 'character name/10.aegir.png' %}" alt="Level 10">
+                    <div class="level-item-details">
+                        <h4>Level 10</h4>
+                        <p>Energy: 9000</p>
+                        <p>Tap score: 24</p>
+                        <p>Boost Time: 10s</p>
+                    </div>
+                    <button class="upgrade-btn" onclick="showremainupgrade(10)"
+                            {% if main_user.level >= 10 %}disabled{% endif %}>status
+                    </button>
+                </div>
+
+                <!-- Level 11 -->
+                <div class="level-item {% if main_user.level >= 11 %}disabled{% endif %}">
+                    <img src="{% static 'character name/11.achilles.png' %}" alt="Level 11">
+                    <div class="level-item-details">
+                        <h4>Level 11</h4>
+                        <p>Energy: 9500</p>
+                        <p>Tap score: 26</p>
+                        <p>Boost Time: 10s</p>
+                    </div>
+                    <button class="upgrade-btn" onclick="showremainupgrade(11)"
+                            {% if main_user.level >= 11 %}disabled{% endif %}>status
+                    </button>
+                </div>
+
+                <!-- Level 12 -->
+                <div class="level-item {% if main_user.level >= 12 %}disabled{% endif %}">
+                    <img src="{% static 'character name/12.tyr.png' %}" alt="Level 12">
+                    <div class="level-item-details">
+                        <h4>Level 12</h4>
+                        <p>Energy: 10000</p>
+                        <p>Tap score: 28</p>
+                        <p>Boost Time: 10s</p>
+                    </div>
+                    <button class="upgrade-btn" onclick="showremainupgrade(12)"
+                            {% if main_user.level >= 12 %}disabled{% endif %}>status
+                    </button>
+                </div>
+
+                <!-- Level 13 -->
+                <div class="level-item {% if main_user.level >= 13 %}disabled{% endif %}">
+                    <img src="{% static 'character name/13.hodr.png' %}" alt="Level 13">
+                    <div class="level-item-details">
+                        <h4>Level 13</h4>
+                        <p>Energy: 10500</p>
+                        <p>Tap score: 30</p>
+                        <p>Boost Time: 10s</p>
+                    </div>
+                    <button class="upgrade-btn" onclick="showremainupgrade(13)"
+                            {% if main_user.level >= 13 %}disabled{% endif %}>status
+                    </button>
+                </div>
+
+                <!-- Level 14 -->
+                <div class="level-item {% if main_user.level >= 14 %}disabled{% endif %}">
+                    <img src="{% static 'character name/14.hera.png' %}" alt="Level 14">
+                    <div class="level-item-details">
+                        <h4>Level 14</h4>
+                        <p>Energy: 11000</p>
+                        <p>Tap score: 32</p>
+                        <p>Boost Time: 10s</p>
+                    </div>
+                    <button class="upgrade-btn" onclick="showremainupgrade(14)"
+                            {% if main_user.level >= 14 %}disabled{% endif %}>status
+                    </button>
+                </div>
+
+                <!-- Level 15 -->
+                <div class="level-item {% if main_user.level >= 15 %}disabled{% endif %}">
+                    <img src="{% static 'character name/15.bragi.png' %}" alt="Level 15">
+                    <div class="level-item-details">
+                        <h4>Level 15</h4>
+                        <p>Energy: 11500</p>
+                        <p>Tap score: 34</p>
+                        <p>Boost Time: 10s</p>
+                    </div>
+                    <button class="upgrade-btn" onclick="showremainupgrade(15)"
+                            {% if main_user.level >= 15 %}disabled{% endif %}>status
+                    </button>
+                </div>
+
+                <!-- Level 16 -->
+                <div class="level-item {% if main_user.level >= 16 %}disabled{% endif %}">
+                    <img src="{% static 'character name/16.skadi.png' %}" alt="Level 16">
+                    <div class="level-item-details">
+                        <h4>Level 16</h4>
+                        <p>Energy: 12000</p>
+                        <p>Tap score: 36</p>
+                        <p>Boost Time: 10s</p>
+                    </div>
+                    <button class="upgrade-btn" onclick="showremainupgrade(16)"
+                            {% if main_user.level >= 16 %}disabled{% endif %}>status
+                    </button>
+                </div>
+
+                <!-- Level 17 -->
+                <div class="level-item {% if main_user.level >= 17 %}disabled{% endif %}">
+                    <img src="{% static 'character name/17.idunn.png' %}" alt="Level 17">
+                    <div class="level-item-details">
+                        <h4>Level 17</h4>
+                        <p>Energy: 12500</p>
+                        <p>Tap score: 38</p>
+                        <p>Boost Time: 10s</p>
+                    </div>
+                    <button class="upgrade-btn" onclick="showremainupgrade(17)"
+                            {% if main_user.level >= 17 %}disabled{% endif %}>status
+                    </button>
+                </div>
+
+                <!-- Level 18 -->
+                <div class="level-item {% if main_user.level >= 18 %}disabled{% endif %}">
+                    <img src="{% static 'character name/18. ares.png' %}" alt="Level 18">
+                    <div class="level-item-details">
+                        <h4>Level 18</h4>
+                        <p>Energy: 13000</p>
+                        <p>Tap score: 40</p>
+                        <p>Boost Time: 10s</p>
+                    </div>
+                    <button class="upgrade-btn" onclick="showremainupgrade(18)"
+                            {% if main_user.level >= 18 %}disabled{% endif %}>status
+                    </button>
+                </div>
+
+                <!-- Level 19 -->
+                <div class="level-item {% if main_user.level >= 19 %}disabled{% endif %}">
+                    <img src="{% static 'character name/19.juten.png' %}" alt="Level 19">
+                    <div class="level-item-details">
+                        <h4>Level 19</h4>
+                        <p>Energy: 15000</p>
+                        <p>Tap score: 45</p>
+                        <p>Boost Time: 10s</p>
+                    </div>
+                    <button class="upgrade-btn" onclick="showremainupgrade(19)"
+                            {% if main_user.level >= 19 %}disabled{% endif %}>status
+                    </button>
+                </div>
+
+                <!-- Level 19 -->
+                <div class="level-item {% if main_user.level >= 20 %}disabled{% endif %}">
+                    <img src="{% static 'character name/20.pandora.png' %}" alt="Level 0">
+                    <div class="level-item-details">
+                        <h4>Level 20</h4>
+                        <p>Energy: 20000</p>
+                        <p>Tap score: 50</p>
+                        <p>Boost Time: 10s</p>
+                    </div>
+                    <button class="upgrade-btn" onclick="showremainupgrade(20)"
+                            {% if main_user.level >= 20 %}disabled{% endif %}>status
+                    </button>
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+    {# popup#}
+    <div id="popupOverlay" class="popup-overlay" onclick="closePopup()"></div>
+    <div id="customPopup" class="popup ">
+        <img src="{% static 'img/check (1) (1).png' %}" id="suc" class="hidden" alt="check"
+             style="width: 20px; margin: 0 10px;">
+        <img src="{% static 'img/decline (1).png' %}" id="dec" class="hidden" alt="decline"
+             style="width: 30px; margin: 0 10px;">
+        <div id="popuptext" class="popup-content"></div>
+    </div>
+
+
+    <div id="popup10" class="popup10">
+        <div class="popup-content10">
+            <span id="closePopupBtn10" class="close10">&times;</span>
+            <p>you have <span id="countdown10">10</span> seconds remain in boost </p>
+        </div>
+    </div>
+    {# end #}
+
+</div>
+
+{#<script src="{% static 'js/index.js' %}"></script>#}
+<script src="{% static 'js/home.js' %}"></script>
+<script src="{% static 'js/crypto-js.js' %}"></script>
+<script src="{% static 'js/cdns.js' %}"></script>
+<script src="{% static 'js/particles.min.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
+
+{#<script src="https://cdnjs.cloudflare.com/ajax/libs/sjcl/1.0.8/sjcl.js"></script>#}
+{#<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>#}
+{#<script src="https://cdn.jsdelivr.net/gh/ericdrowell/KineticJS@master/kinetic.js"></script>#}
+{#<script src="https://cdnjs.cloudflare.com/ajax/libs/kineticjs/5.2.0/kinetic.min.js"></script>#}
+<script src="https://sad.adsgram.ai/js/sad.min.js"></script>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+<script>
+
+
+</script>
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        if (typeof window.Telegram !== 'undefined' && window.Telegram.WebApp) {
+            window.Telegram.WebApp.expand();
+            document.body.style.display = 'block';
+        }
+    });
+
+
+    const progressBarFill = document.getElementById('progressBarFill');
+    const progressValue = {{ progres }};
+
+    const maxValue = 100;
+
+    // Update the width based on the value
+    progressBarFill.style.width = (progressValue / maxValue) * 100 + '%';
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <style>
+        /* General body styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #1a1a1a; /* Dark background */
+    color: #f0f0f0;
+}
+
+/* Container to center content */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+/* Neumorphic 404 error box */
+.error-box {
+    background-color: #262626;
+    border-radius: 20px;
+    box-shadow: 10px 10px 20px #0f0f0f, -10px -10px 20px #333333;
+    padding: 20px 20px;
+    text-align: center;
+}
+
+/* Large 404 text */
+.error-box h1 {
+    font-size: 10rem;
+    margin: 0;
+    color: #ff4747; /* Light red for error number */
+    text-shadow: 2px 2px 8px #ff0000;
+}
+
+/* Message */
+.error-box p {
+    font-size: 1.5rem;
+    margin-top: 0;
+}
+
+/* Back to home button */
+.back-home {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #2d2d2d;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 30px;
+    box-shadow: 5px 5px 10px #121212, -5px -5px 10px #3e3e3e;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect for the button */
+.back-home:hover {
+    background-color: #404040;
+    box-shadow: inset 5px 5px 10px #121212, inset -5px -5px 10px #3e3e3e;
+    color: #ff4747;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="error-box">
+            <h1>404</h1>
+            <p>Oops! Page not found.</p>
+            <a href="/" class="back-home">Go back home</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+ javascript-obfuscator index.js --output home.js --compact true --control-flow-flattening true --control-flow-flattening-threshold 0.75 --dead-code-injection false --identifier-names-generator mangled --rename-globals false --string-array true --string-array-encoding base64 --string-array-threshold 0.75 --unicode-escape-sequence true
