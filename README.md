@@ -16,10 +16,7 @@
 
 ## فیلم مینی اپ
 
-<video width="320" height="240" controls>
-  <source src="./mini%20app.mp4" type="video/mp4">
-  مرورگر شما از پخش ویدئو پشتیبانی نمی‌کند.
-</video>
+<img src="./mini app.gif" width="385px" align="center">
 
 ## راه‌اندازی
 
@@ -28,9 +25,6 @@
 3. سپس با اجرای دستور زیر، ربات را راه‌اندازی کنید:
    ```bash
    python Telegram.py
-
-
-
 
 ## تماس
 - http://t.me/sourcman
